@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<head>
+	<script>
+		function s2_changed(current, sel){
+			for(var i=sel.options.length-1 ; i>= 0 ; i--){
+				sel.options[i] = null;
+			}
+			if(current != "空"){
+				sel.appendChild(new Option("全部", "全部"));
+			}
+			var purple = ['丝绸', '人参', '佛器', '佛珠', '佛经残页', '孔明灯', '明光铠', '梨园乐谱', '灵芝', '纯阳铭牌', '绣球', '藏宝图', '虎牙令', '虫草', '道德经抄本', '酒葫芦', '金针', '雪莲', '霓裳羽衣', '鬼谷兵法'];
+			var blue = ['云板', '天灯', '文房四宝', '熏香', '燕窝', '玄铁', '粉黛', '纸伞', '纸鸢', '茶叶', '葡萄酒', '蝴蝶', '辣椒', '银耳', '雪蛤', '食珍录', '鱼翅'];
+			var green = ['井水', '木鱼', '枸杞', '桂花', '炮竹', '烈酒', '牡丹', '米酒', '罗伞', '芍药', '草药', '莲子', '菜', '萤火虫', '藏宝阁', '虾', '蛋', '蜡烛', '金叶子', '风筝', '马草', '鱼'];
+			if(current == "绿色"){
+				for (var i in green){
+					sel.appendChild(new Option(green[i], green[i]));
+				}
+			}else if(current == "蓝色"){
+				for (var i in blue){
+					sel.appendChild(new Option(blue[i], blue[i]));
+				}
+			}else if(current = "紫色"){
+				for (var i in purple){
+					sel.appendChild(new Option(purple[i], purple[i]));
+				}
+			}else{
+				sel.appendChild(new Option("空", " "));
+			}
+		}
+		function s1_changed(current){
+			var p = ['七秀弟子', '万花弟子', '于睿', '叶芷青', '天策弟子', '小七', '少林弟子', '曹雪阳', '朱剑秋', '李复', '李忘生', '李承恩', '洛风', '渡会', '玄正', '祁进', '秋叶青', '纯阳弟子', '裴元', '谷之岚', '陈月', '高绛婷'];
+			var sel_02 = document.getElementById("select_02");
+			for(var i=sel_02.options.length-1 ; i>= 0 ; i--){
+				sel_02.options[i] = null;
+			}
+			try{
+				var sel_03 = document.getElementById("select_03");
+				if(sel_03 != null){
+					sel_03.parentNode.removeChild(sel_03);
+				}
+			}catch{
+				;
+			}
+			if(current == "人物"){
+				for (var i in p){
+					sel_02.appendChild(new Option(p[i],  p[i]));
+				}
+			}else if(current == "品质"){
+				
+				sel_02.appendChild(new Option("空", " "));
+				sel_02.appendChild(new Option("绿色", "绿色"));
+				sel_02.appendChild(new Option("蓝色", "蓝色"));
+				sel_02.appendChild(new Option("紫色", "紫色"));
+				parent = sel_02.parentNode;
+				var div = document.createElement("select");
+            	div.setAttribute("id", "select_03");
+				parent.insertBefore(div, sel_02.nextElementSibling);
+				var sel_03 = document.getElementById("select_03");
+				sel_03.appendChild(new Option("空", " "));
+				sel_02.addEventListener("change", function(){s2_changed(sel_02.options[sel_02.selectedIndex].value, sel_03)});
+			}else{
+				sel_02.appendChild(new Option("空", " "));
+			}
+		}
+		function pfun(){
+
+			var AAA = [["七秀弟子", "煮锅", ["井水","米","莲子"],"2"],["七秀弟子", "煮锅", ["井水","米","鱼","菜"],"3"],["万花弟子", "煮锅", ["井水","豆腐"],"1"],["万花弟子", "煮锅", ["井水","鱼"],"2"],["万花弟子", "炖锅", ["井水","鸡肉"],"1"],["于睿", "煮锅", ["井水","豆腐","鱼","菜"],"3"],["叶芷青", "蒸锅", ["猪肉","虾","蛋","糯米"],"2"],["天策弟子", "蒸锅", ["井水","蛋"],"2"],["天策弟子", "油锅", ["油","蛋"],"1"],["天策弟子", "炖锅", ["井水","鸡肉","蛋","菜"],"2"],["小七", "煮锅", ["井水","糖","面粉","莲子"],"2"],["少林弟子", "煮锅", ["井水","米","糖"],"1"],["少林弟子", "煮锅", ["井水","糖","菜"],"2"],["曹雪阳", "炖锅", ["井水","猪肉","虾","蛋"],"3"],["朱剑秋", "蒸锅", ["井水","菜","鱼"],"3"],["李复", "煮锅", ["井水","豆腐","辣椒","鱼","菜"],"8"],["李复", "煮锅", ["油","豆腐","辣椒"],"5"],["李复", "油锅", ["油","鸡肉","辣椒"],"5"],["李忘生", "炖锅", ["井水","鸡肉","蛋","豆腐","雪蛤"],"7"],["李承恩", "烤架", ["面粉","油","糖","鸡蛋","燕窝"],"6"],["洛风", "煮锅", ["井水","米","猪肉"],"1"],["洛风", "煮锅", ["井水","菜","虾","猪肉","面粉"],"4"],["渡会", "煮锅", ["井水","豆腐","菜"],"2"],["渡会", "炖锅", ["井水","虫草","人参","灵芝","雪莲"],"61"],["玄正", "蒸锅", ["井水","面粉","糖"],"1"],["玄正", "煮锅", ["油","豆腐","辣椒"],"5"],["祁进", "煮锅", ["井水","油","面粉","蛋"],"2"],["秋叶青", "煮锅", ["井水","虾"],"2"],["秋叶青", "烤架", ["虾"],"1"],["纯阳弟子", "蒸锅", ["井水","猪肉","糯米"],"1"],["纯阳弟子", "煮锅", ["井水","米","菜"],"2"],["裴元", "煮锅", ["井水","糖","面粉","莲子"],"2"],["谷之岚", "蒸锅", ["糯米","桂花","枸杞"],"2"],["陈月", "蒸锅", ["井水","糖","糯米"],"1"],["陈月", "油锅", ["油","面粉","蛋","菜"],"2"],["高绛婷", "蒸锅", ["井水","鸡肉","面粉","虾"],"2"],["高绛婷", "炖锅", ["井水","糖","枸杞","莲子","雪蛤"],"8"]];
+			var sel_02 = document.getElementById("select_02");
+			var current_02 = sel_02.options[sel_02.selectedIndex].value;
+			var button = document.getElementById("button");
+			for (var i in AAA){
+				if(AAA[i][0] == current_02){
+					var br = document.createElement("br");
+					var next = document.createElement("p", AAA[i][1]);
+					next.innerHTML = AAA[i][1];
+					button.parentNode.appendChild(br);
+					button.parentNode.appendChild(next);
+					for (var l in AAA[i][2]){
+						var fff = document.createElement("p", AAA[i][2][l]);
+						fff.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;" + AAA[i][2][l];
+						next.parentNode.appendChild(fff);
+					}
+				}
+			}
+		}
+		function qfun(){
+			var sel_02 = document.getElementById("select_02");
+			var current_02 = sel_02.options[sel_02.selectedIndex].value;
+		}
+		function checkout(){
+			var sel_01 = document.getElementById("select_01");
+			var current_01 = sel_01.options[sel_01.selectedIndex].value;
+			if(current_01 == "人物"){
+				pfun();
+				return;
+			}
+			if(current_01 == "品质"){
+				qfun();
+			}
+		}
+	</script>
+	<h1>剑网三整理</h1></head>
+<body>
+	<select id = "select_01" onchange = "s1_changed(this.options[this.selectedIndex].value)">
+		<option value="空" selected="selected">空</option>
+		<option value='人物'>人物</option>
+		<option value="品质">品质</option>
+	</select>
+	<select id = "select_02">
+		<option value=" ">空</option>
+	</select>
+	<br>
+	<button id = "button" onclick = "checkout()">查看</button>
+</body>
